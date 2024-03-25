@@ -1,0 +1,1 @@
+export const DEFINITION_DISPLAY_SIZE = 5;
