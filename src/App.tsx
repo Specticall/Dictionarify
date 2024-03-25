@@ -1,4 +1,8 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import Home from "./Pages/Home";
 import Bookmark from "./Pages/Bookmark";
 import AppLayout from "./Pages/AppLayout";
@@ -11,6 +15,10 @@ import { BookmarkProvider } from "./Context/BookmarkContext";
 import { DefinitionFinderProvider } from "./Context/DefinitionFinderContext";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to={"/app/home"} />,
+  },
   {
     path: "/app",
     element: <AppLayout />,
