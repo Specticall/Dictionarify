@@ -67,7 +67,7 @@ export default function Login() {
         <div className="mt-4 text-main text-body">
           <label>Password</label>
           <input
-            type="text"
+            type="password"
             placeholder="********"
             className="mt-3 border-[1px] border-border rounded-md px-6 py-4 w-full"
             style={errors.password && { borderColor: "rgb(239 68 68)" }}

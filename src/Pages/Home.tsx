@@ -194,10 +194,14 @@ function Definition({
         </div>
       </div>
       <div></div>
-      <p className="border-[1px] border-main rounded-full px-8 py-2 w-fit items-center justify-center gap-3 text-heading flex mt-4 mb-12">
-        <i className="bx bxs-volume-full"></i>
-        <p className="text-body">{definitionData.phonetic}</p>
-      </p>
+      {definitionData.phonetic ? (
+        <p className="border-[1px] border-main rounded-full px-8 py-2 w-fit items-center justify-center gap-3 text-heading flex mt-4 mb-12">
+          <i className="bx bxs-volume-full"></i>
+          <p className="text-body">{definitionData.phonetic}</p>
+        </p>
+      ) : (
+        <div className="mt-10"></div>
+      )}
       {definitionFirstPart.map((item, index) => {
         return (
           <DefinitionItem
