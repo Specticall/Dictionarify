@@ -43,7 +43,7 @@ function BookmarkHeading({
   const { loggedInUserBookmarks } = useBookmark();
   const bookmarkCount = loggedInUserBookmarks.length;
   return (
-    <div className="flex items-center justify-start">
+    <div className="flex items-center justify-start md:flex-col md:gap-8">
       <div className="flex gap-2">
         <h1 className="text-title text-main font-medium leading-8">
           Bookmarks

@@ -3,6 +3,7 @@ import Button from "./Common/Button";
 import Icons from "./Common/Icons";
 import { CSSProperties, useEffect, useState } from "react";
 import { useAuth } from "../Context/AuthContext";
+import MobileNav from "./MobileNav";
 
 const activeStyles: CSSProperties = {
   color: "black",
@@ -43,37 +44,46 @@ export default function Navbar() {
       }
     >
       <ul className="flex justify-between items-center gap-4 max-w-[75rem] mx-auto py-8 px-8">
-        <div className="flex justify-center items-center gap-8 text-light">
+        <div className="flex items-center gap-8 text-light w-full">
           <li className="mr-6">
             <Icons icon="logo" />
           </li>
-          <li
-            className="cursor-pointer"
-            onClick={handleNavigate("/app/home")}
-            style={pathname === "/app/home" ? activeStyles : undefined}
-          >
-            Dictionary
-          </li>
-          <li
-            className="cursor-pointer"
-            onClick={handleNavigate("/app/bookmark")}
-            style={pathname === "/app/bookmark" ? activeStyles : undefined}
-          >
-            Bookmarks
-          </li>
+          <div className="flex w-full justify-between items-center gap-4 md:hidden">
+            <div className="flex gap-6">
+              <li
+                className="cursor-pointer"
+                onClick={handleNavigate("/app/home")}
+                style={pathname === "/app/home" ? activeStyles : undefined}
+              >
+                Dictionary
+              </li>
+              <li
+                className="cursor-pointer"
+                onClick={handleNavigate("/app/bookmark")}
+                style={pathname === "/app/bookmark" ? activeStyles : undefined}
+              >
+                Bookmarks
+              </li>
+            </div>
+          </div>
+          <div className="md:hidden">
+            {loggedInUserData ? (
+              <Button
+                onClick={() => {
+                  logoutUser();
+                  navigate("/app/home");
+                }}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button onClick={() => navigate("/register")}>Register</Button>
+            )}
+          </div>
+          <div className="hidden md:block ml-auto">
+            <MobileNav />
+          </div>
         </div>
-        {loggedInUserData ? (
-          <Button
-            onClick={() => {
-              logoutUser();
-              navigate("/app/home");
-            }}
-          >
-            Logout
-          </Button>
-        ) : (
-          <Button onClick={() => navigate("/register")}>Register</Button>
-        )}
       </ul>
     </nav>
   );
